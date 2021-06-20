@@ -29,7 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node server.js",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "json-server": "json-server --watch public/db.json --port=3001"
   },
   "eslintConfig": {
