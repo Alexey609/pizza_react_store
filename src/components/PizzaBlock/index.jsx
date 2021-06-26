@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '../Button';
 
-
-function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, cartCount }) {
+function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, addedCount }) {
   const availableTypes = ['тонкое', 'традиционное'];
   const availableSizes = [26, 30, 40];
 
   const [activeType, setActiveType] = React.useState(types[0]);
-  // TODO: Проверить почему не выбирается по умолчанию первый размер при первом рендере
   const [activeSize, setActiveSize] = React.useState(0);
 
   const onSelectType = (index) => {
@@ -22,9 +20,9 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
 
   const onAddPizza = () => {
     const obj = {
-      id, 
-      name, 
-      imageUrl, 
+      id,
+      name,
+      imageUrl,
       price,
       size: availableSizes[activeSize],
       type: availableTypes[activeType],
@@ -79,7 +77,7 @@ function PizzaBlock({ id, name, imageUrl, price, types, sizes, onClickAddPizza, 
             />
           </svg>
           <span>Добавить</span>
-          {cartCount && <i>{cartCount}</i>}
+          {addedCount && <i>{addedCount}</i>}
         </Button>
       </div>
     </div>
@@ -92,7 +90,8 @@ PizzaBlock.propTypes = {
   price: PropTypes.number,
   types: PropTypes.arrayOf(PropTypes.number),
   sizes: PropTypes.arrayOf(PropTypes.number),
-  cartCount: PropTypes.number,
+  onClickAddPizza: PropTypes.func,
+  addedCount: PropTypes.number,
 };
 
 PizzaBlock.defaultProps = {
@@ -101,4 +100,5 @@ PizzaBlock.defaultProps = {
   types: [],
   sizes: [],
 };
+
 export default PizzaBlock;

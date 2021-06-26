@@ -1,1 +1,1 @@
-# pizza_react_store
+# Archakov-pizza-clone
